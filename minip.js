@@ -43,7 +43,7 @@ const COL_BANKNAME = "bankName";
 const COL_BANKBRANCH = "bankBranch";
 const COL_ACCOUNTHOLDERNAME = "accountHolderName";
 
-const COL_CURRDATE = "currDate";
+const COL_CURRDATE = "currentDate";
 const COL_TIMESLOT = "timeSlot";
 const COL_RATING = "rating";
 const COL_COMPLAINT = "complaint";
@@ -184,7 +184,7 @@ app.get("/unverified/:mess", (req,res) =>{
         console.log("Length : "+result.rows.length);
         for (i=0;i<result.rows.length;i++) {
             obj = {};
-            keys = [COL_ROLLNO, COL_PASSWORD, COL_EMAIL, COL_NAME, COL_VERIFIED, COL_MESS, COL_ACCOUNTNO,
+            keys = [COL_ROLLNO, COL_EMAIL, COL_NAME, COL_ACCOUNTNO,
                 COL_IFSCCODE, COL_BANKNAME, COL_BANKBRANCH, COL_ACCOUNTHOLDERNAME];
             user = result.rows[i];
             for (j=0;j<keys.length;j++) {
@@ -222,8 +222,10 @@ app.get("/feedbacks/:mess", (req, res) => {
     parsedQrs = queryString.parse(parsedUrl.query);
 
     mMess = req.params.mess;
-    query = "SELECT * from " + TABLE_USER_FEEDBACKS + " where mess = :mess";
-console.log(query);
+    query = "SELECT user_feedback."+COL_ROLLNO+", "+COL_MESS+", "+COL_CURRDATE+", "+COL_TIMESLOT+", "+COL_RATING+", "
+    +COL_COMPLAINT+ " from " + TABLE_USER_FEEDBACKS+", "+TABLE_STUDENT_USER
+     + " where student_user.mess = :mess and student_user.rollNo = user_feedback.rollNo";
+    console.log(query);
     connection.execute(query,{mess:mMess}, (err, result) => {
         if (err) { 
             console.error(err); 
@@ -237,7 +239,7 @@ console.log(query);
 
         for (i = 0;i < result.rows.length;i++) {
             obj = {};
-            keys = [COL_ROLLNO, COL_PASSWORD, COL_CURRDATE, COL_TIMESLOT, COL_RATING, COL_COMPLAINT];
+            keys = [COL_ROLLNO,COL_CURRDATE, COL_TIMESLOT, COL_RATING, COL_COMPLAINT];
             user = result.rows[i];
             for (j=0;j<keys.length;j++) {
                 obj[keys[j]] = user[j];

@@ -26,7 +26,14 @@ class DashBoard : AppCompatActivity() {
         val email = sharedPref.getString(ADMIN_EMAIL,"NO_EMAIL")
         val mess = sharedPref.getString(ADMIN_MESS,"NO_MESS")
 
-        textAll.text = "Name : $name Email : $email MESS : $mess"
+        dashName.setText("Welcome, $name")
+        dashMess.setText("Mess : $mess")
+
+
+        feedbackButton.setOnClickListener {
+            val i = Intent(this@DashBoard,FeedbackActivity::class.java)
+            startActivity(i)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

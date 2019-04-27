@@ -19,6 +19,8 @@ import android.widget.Toast
 import com.example.admin.networking.APIClient
 import com.example.admin.networking.RetrofitService
 import com.example.admin.objects.Admin
+import com.example.admin.objects.Feedback
+import kotlinx.android.synthetic.main.activity_dash_board.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -130,8 +132,11 @@ class SignIn : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
+                    signUpButton.visibility=View.VISIBLE
+                    signUpProgressBar.visibility = View.GONE
                     Log.e("log", call.request().url().toString())
                     Log.e("ERROR2", t.toString())
+                    Toast.makeText(this@SignIn,"SignUp Failed",Toast.LENGTH_LONG).show()
                 }
             })
 
@@ -182,6 +187,8 @@ class SignIn : AppCompatActivity() {
 
                 override fun onFailure(call: Call<Admin>, t: Throwable) {
                     Toast.makeText(this@SignIn,"Login Failed",Toast.LENGTH_LONG).show()
+                    loginButton.visibility=View.VISIBLE
+                    loginProgressBar.visibility = View.GONE
                     Log.e("log", call.request().url().toString())
                     Log.e("ERROR2", t.toString())
                 }

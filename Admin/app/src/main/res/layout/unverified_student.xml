@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+android:orientation="vertical">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Shivansh Tiwari"
+    android:id="@+id/unver_name"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="IIT2017100"
+              android:id="@+id/unver_roll"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="shivansh16tiwari@gmail.com"
+              android:id="@+id/unver_email"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Verify"
+    android:id="@+id/unver_button_verify"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Reject"
+            android:id="@+id/unver_button_reject"/>
+
+</LinearLayout>

@@ -2,6 +2,8 @@ package com.example.admin.networking;
 
 import com.example.admin.objects.Admin;
 import com.example.admin.objects.Feedback;
+import com.example.admin.objects.RollNo;
+import com.example.admin.objects.Student;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -18,9 +20,15 @@ public interface RetrofitService {
     @POST("/admin")
     Call<String> addAdmin(@Body Admin adminData);
 
+    @POST("/admin/verify")
+    Call<String> verifyUser(@Body RollNo rollNo);
+
     @GET("/login/{email}/{password}")
     Call<Admin> login(@Path("email")String email,@Path("password")String password);
 
     @GET("/feedbacks/{mess}")
     Call<ArrayList<Feedback>> getFeedback(@Path("mess")String mess);
+
+    @GET("/unverified/{mess}")
+    Call<ArrayList<Student>> getUnverifiedStudents(@Path("mess") String mess);
 }

@@ -26,8 +26,9 @@ oracledb.autoCommit = true;
 
 
 const TABLE_ADMIN_USER = "admin_user";
-const TABLE_STUDENT_USER = "student_user";
-const TABLE_USER_FEEDBACKS = "user_feedback";
+const TABLE_STUDENT_USER = "student_users";
+const TABLE_USER_FEEDBACKS = "feedback_record";
+const TABLE_REBATE_APPLICATION = "rebate_application";
 
 
 const COL_PASSWORD = "password";
@@ -43,10 +44,12 @@ const COL_BANKNAME = "bankName";
 const COL_BANKBRANCH = "bankBranch";
 const COL_ACCOUNTHOLDERNAME = "accountHolderName";
 
-const COL_CURRDATE = "currentDate";
+const COL_CURRDATE = "currDate";
 const COL_TIMESLOT = "timeSlot";
 const COL_RATING = "rating";
 const COL_COMPLAINT = "complaint";
+const COL_FROMDATE = "fromDate";
+const COL_TODATE = "toDate";
 
 
 let connection;
@@ -207,11 +210,36 @@ app.post("/admin/verify", (req, res) => {
     }, (err, result) => {
         if (err) { 
             console.error(err); 
-            res.send({"status": false}); 
+            res.send("flase"); 
             return; 
         }
         console.log(result);
-        res.send({"status" : true});
+        res.send("true");
+    })
+})
+
+app.post("/rebate/verify", (req, res) => {
+    mRollNo = req.body.rollNo;
+    mFromDate = req.body.fromDate;
+    mToDate = req.body.toDate;
+
+    console.log(mRollNo);
+    console.log(mFromDate);console.log(mToDate);
+
+    query = "BEGIN accept_rebate( :rollNo, :fromDate, :toDate); END;";
+
+    connection.execute(query, {
+        rollNo: mRollNo,
+        fromDate: mFromDate,
+        toDate: mToDate
+    }, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            res.send("flase"); 
+            return; 
+        }
+        console.log(result);
+        res.send("true");
     })
 })
 
@@ -222,9 +250,9 @@ app.get("/feedbacks/:mess", (req, res) => {
     parsedQrs = queryString.parse(parsedUrl.query);
 
     mMess = req.params.mess;
-    query = "SELECT user_feedback."+COL_ROLLNO+", "+COL_MESS+", "+COL_CURRDATE+", "+COL_TIMESLOT+", "+COL_RATING+", "
+    query = "SELECT feedback_record."+COL_ROLLNO+", "+COL_MESS+", "+COL_CURRDATE+", "+COL_TIMESLOT+", "+COL_RATING+", "
     +COL_COMPLAINT+ " from " + TABLE_USER_FEEDBACKS+", "+TABLE_STUDENT_USER
-     + " where student_user.mess = :mess and student_user.rollNo = user_feedback.rollNo";
+     + " where student_users.mess = :mess and student_users.rollNo = feedback_record.rollNo";
     console.log(query);
     connection.execute(query,{mess:mMess}, (err, result) => {
         if (err) { 
@@ -250,18 +278,41 @@ app.get("/feedbacks/:mess", (req, res) => {
     })
 })
 
-app.post("/createpoll", (req, res) => {
+app.get("/rebate/:mess", (req, res) => {
 
-    //console.log(Object.keys(req.body).length);
-    
-    arrKeys = Object.keys(req.body);
+    parsedUrl = url.parse(req.url);
+    parsedQrs = queryString.parse(parsedUrl.query);
+    mMess = req.params.mess;
 
-    arrKeys.forEach(element => {
-        console.log(req.body[element].options);
-    });
+    query = "SELECT rebate_application."+COL_ROLLNO+", "
+    +COL_FROMDATE+", "+COL_TODATE + " from " + TABLE_REBATE_APPLICATION+", "+TABLE_STUDENT_USER
+     + " where student_users.mess = :mess and student_users.rollNo = rebate_application.rollNo and accepted = 0";
+    console.log(query);
+    connection.execute(query,{mess:mMess}, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            res.send({"status": false}); 
+            return; 
+        }
 
-    res.send({"status":"true"});
+        var arrRebates = [];
+
+        console.log("Length : "+result.rows.length);
+
+        for (i = 0;i < result.rows.length;i++) {
+            obj = {};
+            keys = [COL_ROLLNO,COL_FROMDATE, COL_TODATE];
+            user = result.rows[i];
+            for (j=0;j<keys.length;j++) {
+                obj[keys[j]] = user[j];
+            }
+            arrRebates.push(obj);
+        }
+        res.send(arrRebates);
+    })
 })
+
+
 
 run();
 

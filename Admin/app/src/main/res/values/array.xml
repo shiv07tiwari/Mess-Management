@@ -1,12 +1,12 @@
 <resources>
     <string-array name="planets_array">
-        <item>BH-1</item>
-        <item>BH-2</item>
-        <item>BH-3</item>
-        <item>BH-4</item>
-        <item>BH-5</item>
-        <item>GH-1</item>
-        <item>GH-2</item>
-        <item>GH-3</item>
+        <item>BH1</item>
+        <item>BH2</item>
+        <item>BH3</item>
+        <item>BH4</item>
+        <item>BH5</item>
+        <item>GH1</item>
+        <item>GH2</item>
+        <item>GH3</item>
     </string-array>
 </resources>

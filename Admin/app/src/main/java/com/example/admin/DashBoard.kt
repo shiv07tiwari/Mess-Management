@@ -26,12 +26,17 @@ class DashBoard : AppCompatActivity() {
         val email = sharedPref.getString(ADMIN_EMAIL,"NO_EMAIL")
         val mess = sharedPref.getString(ADMIN_MESS,"NO_MESS")
 
-        dashName.setText("Welcome, $name")
+        dashName.setText("Welcome $name")
         dashMess.setText("Mess : $mess")
 
 
         feedbackButton.setOnClickListener {
             val i = Intent(this@DashBoard,FeedbackActivity::class.java)
+            startActivity(i)
+        }
+
+        verifyButton.setOnClickListener {
+            val i = Intent(this@DashBoard,UnverifiedStudents::class.java)
             startActivity(i)
         }
     }

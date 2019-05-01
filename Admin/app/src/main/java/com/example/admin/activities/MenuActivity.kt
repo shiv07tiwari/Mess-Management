@@ -1,12 +1,14 @@
 package com.example.admin.activities
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.util.Log
+import android.view.View
 import com.example.admin.fragments.BreakfastFragment
 import com.example.admin.fragments.DinnerFragment
 import com.example.admin.fragments.LunchFragment
@@ -14,6 +16,7 @@ import com.example.admin.R
 import com.example.admin.networking.APIClient
 import com.example.admin.networking.RetrofitService
 import com.example.admin.objects.MessMenu
+import kotlinx.android.synthetic.main.activity_menu.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -30,6 +33,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         toolbar = supportActionBar!!
+        progressBar.visibility = View.VISIBLE
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -50,8 +54,10 @@ class MenuActivity : AppCompatActivity() {
 
                     val list = response.body()
 
+
                     for (l in list) {
                         questions.add(l)
+                        Log.e("log", l.timeSlot.toString())
                     }
                     for (i in questions) {
                         Log.e("lofhnfb", i.timeSlot.toString())
@@ -64,6 +70,7 @@ class MenuActivity : AppCompatActivity() {
                         if (i.timeSlot == 3) {
                             mDinner.add(i)
                         }
+                        progressBar.visibility = View.GONE
                         toolbar.title = "Breakfast MessMenu"
                         val breakfastFragment = BreakfastFragment.newInstance()
                         val bundle = Bundle()
@@ -125,5 +132,11 @@ class MenuActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.commit()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val i = Intent(this@MenuActivity, DashBoard::class.java)
+        startActivity(i)
     }
 }

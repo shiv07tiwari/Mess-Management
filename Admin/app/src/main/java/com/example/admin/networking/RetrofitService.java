@@ -27,6 +27,9 @@ public interface RetrofitService {
     @POST("/add/menu/{mess}")
     Call<String> updateMenu(@Body MessMenu menu,@Path("mess") String mess);
 
+    @GET("/updateSession/{mess}")
+    Call<String> updateSession(@Path("mess") String mess);
+
     @GET("/login/{email}/{password}")
     Call<Admin> login(@Path("email")String email,@Path("password")String password);
 

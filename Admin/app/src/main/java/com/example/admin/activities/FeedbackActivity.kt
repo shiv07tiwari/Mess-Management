@@ -1,6 +1,7 @@
 package com.example.admin.activities
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_feedback.*
@@ -73,4 +74,9 @@ class FeedbackActivity : AppCompatActivity() {
         })
 
         }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val i = Intent(this@FeedbackActivity, DashBoard::class.java)
+        startActivity(i)
+    }
 }

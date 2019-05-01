@@ -66,7 +66,7 @@ public class RebateAdapter extends RecyclerView.Adapter<RebateAdapter.MyViewHold
 
         holder.mRoll.setText("Roll Number : "+mDataset.get(position).getName());
         holder.mTo.setText("End Date : "+String.valueOf(mDataset.get(position).getToDate()));
-        int amount = (mDataset.get(position).getFromDate()-mDataset.get(position).getToDate())*600;
+        long amount = (mDataset.get(position).getFromDate()-mDataset.get(position).getToDate())*600;
         holder.mFrom.setText(String.valueOf("Start Date : "+mDataset.get(position).getFromDate()));
 
         holder.mAmount.setText("Total Amount : "+String.valueOf(amount));

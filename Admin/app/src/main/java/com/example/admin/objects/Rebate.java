@@ -11,11 +11,11 @@ public class Rebate {
     private String name;
     @SerializedName("fromDate")
     @Expose
-    private Integer fromDate;
+    private Long fromDate;
     @SerializedName("toDate")
     @Expose
-    private Integer toDate;
-    private Integer amount;
+    private Long toDate;
+    private long amount;
 
     public String getName() {
         return name;
@@ -25,31 +25,28 @@ public class Rebate {
         this.name = name;
     }
 
-    public Integer getFromDate() {
+    public Long getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Integer fromDate) {
-        this.fromDate = fromDate;
-    }
+    //public void setFromDate(Integer fromDate) {
+       // this.fromDate = fromDate;
+    //}
 
-    public Integer getToDate() {
+    public Long getToDate() {
         return toDate;
     }
 
-    public void setToDate(Integer toDate) {
-        this.toDate = toDate;
-    }
 
-    public Integer getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 
-    public Rebate(String name, Integer fromDate, Integer toDate) {
+    public Rebate(String name, Long fromDate, Long toDate) {
         this.name = name;
         this.fromDate = fromDate;
         this.toDate = toDate;

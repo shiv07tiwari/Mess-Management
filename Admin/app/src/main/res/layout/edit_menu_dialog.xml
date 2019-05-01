@@ -3,103 +3,92 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-<TextView android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="@color/black"
-          android:textSize="12sp"
-          android:layout_margin="5dp"
-          android:layout_gravity="center"
-          android:text="Everyday Items"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:id="@+id/update_everyday"/>
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Everyday Items"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_everyday"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Sunday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_sunday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Monday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_monday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Tuesday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_tuesday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Wednesday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_wednesday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Thursday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_thursday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Friday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_friday"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/black"
-              android:textSize="12sp"
-              android:layout_margin="5dp"
-              android:layout_gravity="center"
-              android:text="Saturday"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginStart="20dp"
-              android:layout_marginEnd="20dp"
-              android:id="@+id/update_saturday"/>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:hint="Sunday Menu"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_sunday"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:hint="Monday Menu"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_monday"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:hint="Tuesday Menu"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_tuesday"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Wednesday Menu"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_wednesday"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:hint="Thursday Menu"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_thursday"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginEnd="20dp"
+                  android:hint="Friday Menu"
+                  android:id="@+id/update_friday"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Saturday Menu"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginEnd="20dp"
+                  android:id="@+id/update_saturday"/>
+    </android.support.design.widget.TextInputLayout>
+
     <Button android:layout_width="150dp"
             android:layout_height="wrap_content"
     android:background="@color/blue"

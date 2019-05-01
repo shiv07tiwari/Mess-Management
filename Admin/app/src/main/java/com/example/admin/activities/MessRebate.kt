@@ -1,6 +1,7 @@
 package com.example.admin.activities
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -65,5 +66,10 @@ class MessRebate : AppCompatActivity() {
                 Log.e("ERROR2", t.toString())
             }
         })
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val i = Intent(this@MessRebate, DashBoard::class.java)
+        startActivity(i)
     }
 }

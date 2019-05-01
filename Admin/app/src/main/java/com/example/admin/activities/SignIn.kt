@@ -121,6 +121,7 @@ class SignIn : AppCompatActivity() {
                         }
                         val i = Intent(this@SignIn, DashBoard::class.java)
                         startActivity(i)
+                        finish()
 
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -173,6 +174,7 @@ class SignIn : AppCompatActivity() {
                             }
                             val i = Intent(this@SignIn, DashBoard::class.java)
                             startActivity(i)
+                            finish()
                         }
 
                     } catch (e: Exception) {
@@ -218,4 +220,5 @@ class SignIn : AppCompatActivity() {
             }
         })
     }
+
 }

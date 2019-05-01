@@ -33,6 +33,13 @@
                       android:id="@+id/dashMess"
                       android:layout_marginBottom="10dp"
                       android:textColor="@color/white"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:id="@+id/dash_update_sem"
+                    android:background="@color/blue_light"
+            android:text="Update Semester"/>
         </LinearLayout>
     </LinearLayout>
     <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">

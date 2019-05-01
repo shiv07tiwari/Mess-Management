@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.BreakfastFragment">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+        <ImageView android:layout_width="150dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:layout_height="150dp"
+                   android:src="@drawable/dinner"
+                   android:layout_gravity="center"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Everyday Items"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="3dp"
+                      android:layout_marginStart="5dp"
+                      android:layout_marginEnd="5dp"
+                      android:background="@color/black"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="12sp"
+                  android:textColor="@color/black"
+                  android:gravity="center"
+                  android:id="@+id/d_everyday"
+                  android:layout_gravity="center"
+                  android:layout_marginBottom="5dp"
+                  android:layout_marginTop="5dp"
+                  android:text="Bread, Milk, Tea, Eggs/Banana, Coffee"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="3dp"
+                      android:layout_marginStart="5dp"
+                      android:layout_marginEnd="5dp"
+                      android:background="@color/black"/>
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        app:cardCornerRadius="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        xmlns:android="http://schemas.android.com/apk/res/android">
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:textColor="@color/black"
+                                  android:textSize="18sp"
+                                  android:layout_gravity="center"
+                                  android:text="Sunday"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:textColor="@color/black"
+                                  android:textSize="14sp"
+                                  android:id="@+id/d_sunday"
+                                  android:layout_marginTop="3dp"
+                                  android:layout_gravity="center"
+                                  android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Monday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:id="@+id/d_monday"
+                              android:layout_marginTop="3dp"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Tuesday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:id="@+id/d_tuesday"
+                              android:layout_marginTop="3dp"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Wednesday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:id="@+id/d_wednesday"
+                              android:layout_marginTop="3dp"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Thursday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:id="@+id/d_thursday"
+                              android:layout_marginTop="3dp"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Friday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:layout_marginTop="3dp"
+                              android:id="@+id/d_friday"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="18sp"
+                              android:layout_gravity="center"
+                              android:text="Saturday"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/black"
+                              android:textSize="14sp"
+                              android:id="@+id/d_saturday"
+                              android:layout_marginTop="3dp"
+                              android:layout_gravity="center"
+                              android:text="Masala Dosa, Chatni, Corn Flakes"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</FrameLayout>

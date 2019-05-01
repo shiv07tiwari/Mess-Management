@@ -1,4 +1,4 @@
-package com.example.admin
+package com.example.admin.activities
 
 import android.animation.Animator
 import android.content.Context
@@ -16,11 +16,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.ArrayAdapter
 import android.util.Log
 import android.widget.Toast
+import com.example.admin.R
 import com.example.admin.networking.APIClient
 import com.example.admin.networking.RetrofitService
 import com.example.admin.objects.Admin
-import com.example.admin.objects.Feedback
-import kotlinx.android.synthetic.main.activity_dash_board.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -39,7 +38,7 @@ class SignIn : AppCompatActivity() {
         val sharedPref = this@SignIn.getSharedPreferences("name",Context.MODE_PRIVATE) ?: return
         val loginStatus = sharedPref.getBoolean(IS_LOGGEDIN,false)
         if (loginStatus) {
-            val i = Intent(this@SignIn,DashBoard::class.java)
+            val i = Intent(this@SignIn, DashBoard::class.java)
             startActivity(i)
         }
     }
@@ -120,7 +119,7 @@ class SignIn : AppCompatActivity() {
                             putBoolean(IS_LOGGEDIN,true)
                             apply()
                         }
-                        val i = Intent(this@SignIn,DashBoard::class.java)
+                        val i = Intent(this@SignIn, DashBoard::class.java)
                         startActivity(i)
 
                     } catch (e: Exception) {
@@ -172,7 +171,7 @@ class SignIn : AppCompatActivity() {
                                 putBoolean(IS_LOGGEDIN,true)
                                 apply()
                             }
-                            val i = Intent(this@SignIn,DashBoard::class.java)
+                            val i = Intent(this@SignIn, DashBoard::class.java)
                             startActivity(i)
                         }
 

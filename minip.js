@@ -187,7 +187,7 @@ app.get("/unverified/:mess", (req,res) =>{
         console.log("Length : "+result.rows.length);
         for (i=0;i<result.rows.length;i++) {
             obj = {};
-            keys = [COL_ROLLNO, COL_EMAIL, COL_NAME, COL_ACCOUNTNO,
+            keys = [COL_ROLLNO, COL_PASSWORD, COL_EMAIL, COL_NAME, COL_ACCOUNTNO,
                 COL_IFSCCODE, COL_BANKNAME, COL_BANKBRANCH, COL_ACCOUNTHOLDERNAME];
             user = result.rows[i];
             for (j=0;j<keys.length;j++) {
@@ -243,6 +243,83 @@ app.post("/rebate/verify", (req, res) => {
     })
 })
 
+app.post("/rebate/verify", (req, res) => {
+    mRollNo = req.body.rollNo;
+    mFromDate = req.body.fromDate;
+    mToDate = req.body.toDate;
+
+    console.log(mRollNo);
+    console.log(mFromDate);console.log(mToDate);
+
+    query = "BEGIN accept_rebate( :rollNo, :fromDate, :toDate); END;";
+
+    connection.execute(query, {
+        rollNo: mRollNo,
+        fromDate: mFromDate,
+        toDate: mToDate
+    }, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            res.send("flase"); 
+            return; 
+        }
+        console.log(result);
+        res.send("true");
+    })
+})
+
+app.post("/poll/:mess", (req, res) => {
+    mId = req.body.pollID
+    mQues = req.body.pollquestion;
+    mOptions = req.body.options;
+    var array = mOptions.split(',')
+    console.log(mId+" "+mQues+" "+mOptions);
+
+    parsedUrl = url.parse(req.url);
+    parsedQrs = queryString.parse(parsedUrl.query);
+
+    mMess = req.params.mess;
+
+    query = "INSERT INTO poll_question VALUES (:id, :ques, :mess,1)";
+    console.log(query);
+
+    connection.execute(query, {
+        id: mId,
+        ques: mQues,
+        mess: mMess
+    }, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            //res.send("flase"); 
+            return; 
+        }
+        console.log(result);
+    })
+
+    for (i=0;i<array.length-1;i++) {
+
+        console.log(i);
+        query2 = "INSERT INTO poll_options VALUES (:id, :no, :optiontext)";
+
+    connection.execute(query2, {
+        id: mId,
+        no: i+1,
+        optiontext: array[i]
+    }, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            //res.send("flase"); 
+            return; 
+        }
+        console.log(result);
+    
+    })
+    }
+
+    res.send("true");
+})
+
+
 
 app.get("/feedbacks/:mess", (req, res) => {
 
@@ -250,7 +327,7 @@ app.get("/feedbacks/:mess", (req, res) => {
     parsedQrs = queryString.parse(parsedUrl.query);
 
     mMess = req.params.mess;
-    query = "SELECT feedback_record."+COL_ROLLNO+", "+COL_MESS+", "+COL_CURRDATE+", "+COL_TIMESLOT+", "+COL_RATING+", "
+    query = "SELECT feedback_record."+COL_ROLLNO+", "+COL_CURRDATE+", "+COL_TIMESLOT+", "+COL_RATING+", "
     +COL_COMPLAINT+ " from " + TABLE_USER_FEEDBACKS+", "+TABLE_STUDENT_USER
      + " where student_users.mess = :mess and student_users.rollNo = feedback_record.rollNo";
     console.log(query);
@@ -312,11 +389,98 @@ app.get("/rebate/:mess", (req, res) => {
     })
 })
 
+app.get("/menu/:mess/", (req, res) => {
+
+    parsedUrl = url.parse(req.url);
+    parsedQrs = queryString.parse(parsedUrl.query);
+    mMess = req.params.mess;
+    
+    query = "SELECT day_menu.timeSlot, weekday, day_menu.menu, fixed_slot_menu.menuDaily from fixed_slot_menu, day_menu where fixed_slot_menu.mess = :mess and fixed_slot_menu.timeSLot = day_menu.timeSlot ORDER BY weekday, timeSlot"
+    console.log(query);
+   
+   
+    connection.execute(query,{mess:mMess}, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            res.send({"status": false}); 
+            return; 
+        }
+
+        console.log("Length : "+result.rows);
+
+        var final = [];
+        for (i = 0;i < 3 ; i++) {
+            //console.log("I : "+i);
+            keys = ["timeSlot", "fixedMenu","mondayMenu","tuesdayMenu","wednesdayMenu","thursdayMenu","fridayMenu","saturdayMenu","sundayMenu"];
+            obj = {};
+
+            user1 = result.rows[i];
+            obj[keys[0]] = user1[0];
+            obj[keys[1]] = user1[3];
+            count = 2;
+
+            for (j = i;j < result.rows.length;j = j+3) {
+                //console.log("J : "+j);
+                
+                user = result.rows[j];
+                obj[keys[count]] = user[2];
+                count++;
+            }
+            final.push(obj);
+        }
+        res.send(final);
+    })
+})
+
+
+app.post("/add/menu/:mess", (req, res) => {
+
+    parsedUrl = url.parse(req.url);
+    parsedQrs = queryString.parse(parsedUrl.query);
+    mMess = req.params.mess;
+    
+
+    mTimeSlot = req.body.timeSlot;
+    mfixedMenu = req.body.fixedMenu;
+    mondayMenu = req.body.mondayMenu;
+    tuesdayMenu = req.body.tuesdayMenu;
+    wednesdayMenu = req.body.wednesdayMenu;
+    thursdayMenu = req.body.thursdayMenu;
+    fridayMenu = req.body.fridayMenu;
+    saturdayMenu = req.body.saturdayMenu;
+    sundayMenu = req.body.sundayMenu;
+
+
+
+
+    query = "BEGIN add_menu( :mess, :fixedmenu, :mondayMenu, :tuesMenu, :wedMenu, :thurMenu, :friMenu, :satMenu, :sunMenu, :timeSlot); END;";
+
+    connection.execute(query, {
+        mess: mMess,
+        fixedMenu: mfixedMenu,
+        mondayMenu : mondayMenu,
+        tuesMenu: tuesdayMenu,
+        wedMenu : wednesdayMenu,
+        thurMenu : thursdayMenu,
+        friMenu : fridayMenu,
+        satMenu : saturdayMenu,
+        sunMenu : sundayMenu,
+        timeSlot : mTimeSlot
+    }, (err, result) => {
+        if (err) { 
+            console.error(err); 
+            res.send("flase"); 
+            return; 
+        }
+        console.log(result);
+        res.send("true");
+    })
+})
 
 
 run();
 
 
-app.listen(3000, function(){
+app.listen(4000, function(){
   console.log("server started........");
 })

@@ -6,4 +6,8 @@
     <color name="black">#0A0000</color>
     <color name="white">#FFF</color>
     <color name="main_back">#8D9792</color>
+    <color name="green">#25CC13</color>
+    <color name="red">#CF1B0D</color>
+    <color name="blue">#0D1492</color>
+    <color name="blue_light">#232DCF</color>
 </resources>

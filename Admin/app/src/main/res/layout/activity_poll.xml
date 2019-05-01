@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        tools:context=".activities.PollActivity">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="30sp"
+        android:text="Create a New Poll"
+        android:textSize="20sp"
+              android:layout_gravity="center"
+    android:textColor="@color/black"/>
+
+    <EditText android:layout_width="match_parent"
+              android:layout_margin="10dp"
+              android:hint="Poll ID"
+              android:id="@+id/poll_id"
+              android:layout_height="wrap_content"/>
+    <EditText android:layout_width="match_parent"
+              android:layout_margin="10dp"
+              android:hint="Poll Question"
+              android:id="@+id/poll_question"
+              android:layout_height="wrap_content"/>
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    android:layout_gravity="center"
+            android:id="@+id/add_option"
+    android:textColor="@color/white"
+            android:padding="5dp"
+    android:background="@color/blue"
+    android:text="Add an Option"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ll_options"
+                  android:layout_margin="10dp"
+    android:orientation="vertical">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/o1"
+                  android:tag="option1"
+                  android:hint="Option 1"/>
+    </LinearLayout>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:id="@+id/make_pole"
+            android:background="@color/blue"
+            android:text="Create Poll"/>
+
+</LinearLayout>

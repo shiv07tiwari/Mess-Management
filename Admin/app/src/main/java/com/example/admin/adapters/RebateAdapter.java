@@ -13,62 +13,71 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import com.example.admin.R;
 import com.example.admin.networking.APIClient;
 import com.example.admin.networking.RetrofitService;
-import com.example.admin.objects.RollNo;
-import com.example.admin.objects.Student;
+import com.example.admin.objects.Rebate;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.ArrayList;
 
-public class UnverifiedAdapter extends RecyclerView.Adapter<UnverifiedAdapter.MyViewHolder> {
-    private ArrayList<Student> mDataset;
+public class RebateAdapter extends RecyclerView.Adapter<RebateAdapter.MyViewHolder> {
+
+    private ArrayList<Rebate> mDataset;
     private Context mContext;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mName;
         public TextView mRoll;
-        public TextView mEmail;
+        public TextView mFrom;
+        public TextView mTo;
+        public TextView mAmount;
         public CircularProgressButton mVerify;
 
         public MyViewHolder(View v) {
             super(v);
-            mName = itemView.findViewById(R.id.unver_name);
-            mRoll = itemView.findViewById(R.id.unver_roll);
-            mEmail = itemView.findViewById(R.id.unver_email);
-            mVerify = itemView.findViewById(R.id.unver_button_verify);
+
+            mRoll = itemView.findViewById(R.id.rebate_roll);
+            mFrom = itemView.findViewById(R.id.rebate_from);
+            mTo = itemView.findViewById(R.id.rebate_to);
+            mAmount = itemView.findViewById(R.id.rebate_amount);
+            mVerify = itemView.findViewById(R.id.rebate_button_verify);
             //mReject = itemView.findViewById(R.id.unver_button_reject);
 
         }
     }
 
-    public UnverifiedAdapter(ArrayList<Student> myDataset, Context context) {
+    public RebateAdapter(ArrayList<Rebate> myDataset, Context context) {
         mDataset = myDataset;
         mContext = context;
     }
 
     @Override
-    public UnverifiedAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                           int viewType) {
+    public RebateAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                             int viewType) {
         View view;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.unverified_student, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mess_rebate_item, parent, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.mName.setText(mDataset.get(position).getName());
-        holder.mRoll.setText(mDataset.get(position).getRollNo());
-        holder.mEmail.setText(mDataset.get(position).getEmail());
+
+
+        holder.mRoll.setText("Roll Number : "+mDataset.get(position).getName());
+        holder.mTo.setText("End Date : "+String.valueOf(mDataset.get(position).getToDate()));
+        int amount = (mDataset.get(position).getFromDate()-mDataset.get(position).getToDate())*600;
+        holder.mFrom.setText(String.valueOf("Start Date : "+mDataset.get(position).getFromDate()));
+
+        holder.mAmount.setText("Total Amount : "+String.valueOf(amount));
+
         holder.mVerify.doneLoadingAnimation(mContext.getResources().getColor(R.color.green), BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_done_white_48dp));
         holder.mVerify.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RetrofitService apiService =
                         APIClient.getSOSClient().create(RetrofitService.class);
-                RollNo r = new RollNo(mDataset.get(position).getRollNo());
-                Call<String> call = apiService.verifyUser(r);
+                Rebate r = new Rebate(mDataset.get(position).getName(),mDataset.get(position).getFromDate(),mDataset.get(position).getToDate());
+                Call<String> call = apiService.verifyRebate(r);
                 holder.mVerify.startAnimation();
 
                 call.enqueue(new Callback<String>() {
@@ -78,7 +87,7 @@ public class UnverifiedAdapter extends RecyclerView.Adapter<UnverifiedAdapter.My
                         try {
                             holder.mVerify.doneLoadingAnimation(mContext.getResources().getColor(R.color.green), BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_done_white_48dp));
                             Log.e("log", call.request().url().toString());
-                            Toast.makeText(mContext,"Student Verified Successfully !",Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext,"Rebate Approved Successfully !",Toast.LENGTH_LONG).show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

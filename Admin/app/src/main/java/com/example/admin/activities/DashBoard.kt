@@ -1,13 +1,18 @@
-package com.example.admin
+package com.example.admin.activities
 
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_dash_board.*
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
+import com.example.admin.*
+import com.example.admin.networking.APIClient
+import com.example.admin.networking.RetrofitService
+import retrofit2.Call
+import retrofit2.Response
 
 
 class DashBoard : AppCompatActivity() {
@@ -29,14 +34,25 @@ class DashBoard : AppCompatActivity() {
         dashName.setText("Welcome $name")
         dashMess.setText("Mess : $mess")
 
-
         feedbackButton.setOnClickListener {
-            val i = Intent(this@DashBoard,FeedbackActivity::class.java)
+            val i = Intent(this@DashBoard, FeedbackActivity::class.java)
             startActivity(i)
         }
 
         verifyButton.setOnClickListener {
-            val i = Intent(this@DashBoard,UnverifiedStudents::class.java)
+            val i = Intent(this@DashBoard, UnverifiedStudents::class.java)
+            startActivity(i)
+        }
+        rebateButton.setOnClickListener {
+            val i = Intent(this@DashBoard, MessRebate::class.java)
+            startActivity(i)
+        }
+        menuButton.setOnClickListener {
+            val i = Intent(this@DashBoard, MenuActivity::class.java)
+            startActivity(i)
+        }
+        surveyButton.setOnClickListener {
+            val i = Intent(this@DashBoard, PollActivity::class.java)
             startActivity(i)
         }
     }
@@ -56,7 +72,7 @@ class DashBoard : AppCompatActivity() {
                     putBoolean(IS_LOGGEDIN,false)
                     apply()
                 }
-                val i = Intent(this@DashBoard,SignIn::class.java)
+                val i = Intent(this@DashBoard, SignIn::class.java)
                 startActivity(i)
             }
         }

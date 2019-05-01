@@ -11,7 +11,7 @@ public class Feedback {
     @SerializedName("mess")
     @Expose
     private String mess;
-    @SerializedName("currentDate")
+    @SerializedName("currDate")
     @Expose
     private String currentDate;
     @SerializedName("timeSlot")

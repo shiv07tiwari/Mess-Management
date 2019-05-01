@@ -2,6 +2,7 @@ package com.example.admin.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +52,10 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.mName.setText(mDataset.get(position).getRollNo());
-        holder.mDate.setText(mDataset.get(position).getCurrentDate());
-        holder.mTime.setText(mDataset.get(position).getTimeSlot());
+        holder.mName.setText("Name : "+mDataset.get(position).getRollNo());
+        holder.mDate.setText("Current Date : "+mDataset.get(position).getCurrentDate());
+        holder.mTime.setText("Time Slot : "+mDataset.get(position).getTimeSlot());
+        Log.e("log",mDataset.get(position).getComplaint());
         holder.mFeedback.setText(mDataset.get(position).getComplaint());
     }
 

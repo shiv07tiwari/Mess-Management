@@ -11,18 +11,30 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".UnverifiedStudents">
+        <activity android:name=".activities.PollActivity">
         </activity>
         <activity
-                android:name=".FeedbackActivity"
+                android:name=".activities.MenuActivity"
+                android:label="Mess Menu">
+        </activity>
+        <activity
+                android:name=".activities.MessRebate"
+                android:label="Verify Mess Rebate">
+        </activity>
+        <activity
+                android:name=".activities.UnverifiedStudents"
+                android:label="Verify Students">
+        </activity>
+        <activity
+                android:name=".activities.FeedbackActivity"
                 android:label="Feedbacks">
         </activity>
         <activity
-                android:name=".DashBoard"
+                android:name=".activities.DashBoard"
                 android:label="Admin DashBoard">
         </activity>
         <activity
-                android:name=".SignIn"
+                android:name=".activities.SignIn"
                 android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

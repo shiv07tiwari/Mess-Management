@@ -1,4 +1,4 @@
-package com.example.admin
+package com.example.admin.activities
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.View
-import com.example.admin.adapters.FeedbackAdapter
+import com.example.admin.R
 import com.example.admin.adapters.UnverifiedAdapter
 import com.example.admin.networking.APIClient
 import com.example.admin.networking.RetrofitService
-import com.example.admin.objects.Feedback
 import com.example.admin.objects.Student
 import kotlinx.android.synthetic.main.activity_feedback.*
 import retrofit2.Call
